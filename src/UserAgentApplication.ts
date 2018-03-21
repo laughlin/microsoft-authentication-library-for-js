@@ -358,7 +358,7 @@ export class UserAgentApplication {
           this._cacheStorage.setItem(authorityKey, this.authority);
         }
 
-        const urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+        const urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
         this._loginInProgress = true;
         this._requestType = Constants.login;
         this.promptUser(urlNavigate);
@@ -418,7 +418,7 @@ export class UserAgentApplication {
           this._cacheStorage.setItem(authorityKey, this.authority);
         }
 
-        const urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+        const urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
         this._renewStates.push(authenticationRequest.state);
         this.registerCallback(authenticationRequest.state, scope, resolve, reject);
         this._requestType = Constants.login;
@@ -925,7 +925,7 @@ export class UserAgentApplication {
         authenticationRequest.extraQueryParameters = extraQueryParameters;
       }
 
-      let urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+      let urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
       urlNavigate = this.addHintParameters(urlNavigate, userObject);
       if (urlNavigate) {
         this._cacheStorage.setItem(Constants.stateAcquireToken, authenticationRequest.state);
@@ -1010,7 +1010,7 @@ export class UserAgentApplication {
           authenticationRequest.extraQueryParameters = extraQueryParameters;
         }
 
-        let urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+        let urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
         urlNavigate = this.addHintParameters(urlNavigate, userObject);
         this._renewStates.push(authenticationRequest.state);
         this.registerCallback(authenticationRequest.state, scope, resolve, reject);
