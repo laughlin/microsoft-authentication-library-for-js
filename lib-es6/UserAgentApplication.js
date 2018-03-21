@@ -221,7 +221,7 @@ var UserAgentApplication = /** @class */ (function () {
             if (Utils.isEmpty(_this._cacheStorage.getItem(authorityKey))) {
                 _this._cacheStorage.setItem(authorityKey, _this.authority);
             }
-            var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+            var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
             _this._loginInProgress = true;
             _this._requestType = Constants.login;
             _this.promptUser(urlNavigate);
@@ -275,7 +275,7 @@ var UserAgentApplication = /** @class */ (function () {
                 if (Utils.isEmpty(_this._cacheStorage.getItem(authorityKey))) {
                     _this._cacheStorage.setItem(authorityKey, _this.authority);
                 }
-                var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+                var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
                 _this._renewStates.push(authenticationRequest.state);
                 _this.registerCallback(authenticationRequest.state, scope, resolve, reject);
                 _this._requestType = Constants.login;
@@ -727,7 +727,7 @@ var UserAgentApplication = /** @class */ (function () {
             if (extraQueryParameters) {
                 authenticationRequest.extraQueryParameters = extraQueryParameters;
             }
-            var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+            var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
             urlNavigate = _this.addHintParameters(urlNavigate, userObject);
             if (urlNavigate) {
                 _this._cacheStorage.setItem(Constants.stateAcquireToken, authenticationRequest.state);
@@ -788,7 +788,7 @@ var UserAgentApplication = /** @class */ (function () {
                 if (extraQueryParameters) {
                     authenticationRequest.extraQueryParameters = extraQueryParameters;
                 }
-                var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+                var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
                 urlNavigate = _this.addHintParameters(urlNavigate, userObject);
                 _this._renewStates.push(authenticationRequest.state);
                 _this.registerCallback(authenticationRequest.state, scope, resolve, reject);
