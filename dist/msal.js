@@ -1,4 +1,4 @@
-/*! msal v0.1.5 2018-02-27 */
+/*! msal v0.1.5 2018-03-21 */
 
 'use strict';
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -10,7 +10,7 @@
 		exports["Msal"] = factory();
 	else
 		root["Msal"] = factory();
-})(this, function() {
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -475,6 +475,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["__asyncGenerator"] = __asyncGenerator;
 /* harmony export (immutable) */ __webpack_exports__["__asyncDelegator"] = __asyncDelegator;
 /* harmony export (immutable) */ __webpack_exports__["__asyncValues"] = __asyncValues;
+/* harmony export (immutable) */ __webpack_exports__["__makeTemplateObject"] = __makeTemplateObject;
+/* harmony export (immutable) */ __webpack_exports__["__importStar"] = __importStar;
+/* harmony export (immutable) */ __webpack_exports__["__importDefault"] = __importDefault;
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -537,7 +540,7 @@ function __metadata(metadataKey, metadataValue) {
 function __awaiter(thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
         function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
@@ -636,6 +639,24 @@ function __asyncValues(o) {
     var m = o[Symbol.asyncIterator];
     return m ? m.call(o) : typeof __values === "function" ? __values(o) : o[Symbol.iterator]();
 }
+
+function __makeTemplateObject(cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+function __importStar(mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result.default = mod;
+    return result;
+}
+
+function __importDefault(mod) {
+    return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
 
 /***/ }),
 /* 2 */
@@ -1833,7 +1854,7 @@ var UserAgentApplication = /** @class */ (function () {
             if (Utils_1.Utils.isEmpty(_this._cacheStorage.getItem(authorityKey))) {
                 _this._cacheStorage.setItem(authorityKey, _this.authority);
             }
-            var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+            var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
             _this._loginInProgress = true;
             _this._requestType = Constants_1.Constants.login;
             _this.promptUser(urlNavigate);
@@ -1887,7 +1908,7 @@ var UserAgentApplication = /** @class */ (function () {
                 if (Utils_1.Utils.isEmpty(_this._cacheStorage.getItem(authorityKey))) {
                     _this._cacheStorage.setItem(authorityKey, _this.authority);
                 }
-                var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+                var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
                 _this._renewStates.push(authenticationRequest.state);
                 _this.registerCallback(authenticationRequest.state, scope, resolve, reject);
                 _this._requestType = Constants_1.Constants.login;
@@ -2339,7 +2360,7 @@ var UserAgentApplication = /** @class */ (function () {
             if (extraQueryParameters) {
                 authenticationRequest.extraQueryParameters = extraQueryParameters;
             }
-            var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+            var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
             urlNavigate = _this.addHintParameters(urlNavigate, userObject);
             if (urlNavigate) {
                 _this._cacheStorage.setItem(Constants_1.Constants.stateAcquireToken, authenticationRequest.state);
@@ -2400,7 +2421,7 @@ var UserAgentApplication = /** @class */ (function () {
                 if (extraQueryParameters) {
                     authenticationRequest.extraQueryParameters = extraQueryParameters;
                 }
-                var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=select_account" + "&response_mode=fragment";
+                var urlNavigate = authenticationRequest.createNavigateUrl(scopes) + "&prompt=login" + "&response_mode=fragment";
                 urlNavigate = _this.addHintParameters(urlNavigate, userObject);
                 _this._renewStates.push(authenticationRequest.state);
                 _this.registerCallback(authenticationRequest.state, scope, resolve, reject);
